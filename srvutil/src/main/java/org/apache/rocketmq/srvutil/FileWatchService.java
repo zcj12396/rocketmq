@@ -15,6 +15,10 @@
  * limitations under the License.
  */
 
+/**
+ * 实现配置文件热加载
+ */
+
 package org.apache.rocketmq.srvutil;
 
 import java.io.File;

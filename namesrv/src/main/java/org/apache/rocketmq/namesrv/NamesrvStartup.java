@@ -53,7 +53,7 @@ public class NamesrvStartup {
 
     public static NamesrvController main0(String[] args) {
 
-        try {
+        try {//创建Controller
             NamesrvController controller = createNamesrvController(args);
             start(controller);
             String tip = "The Name Server boot success. serializeType=" + RemotingCommand.getSerializeTypeConfigInThisServer();
@@ -136,13 +136,17 @@ public class NamesrvStartup {
         if (null == controller) {
             throw new IllegalArgumentException("NamesrvController is null");
         }
-
+        //加载kvConfig配置
+        // remotingServer（NETTY） 传入2个参数：64的通信最大请求数（同步和异步） Listener：BrokerHousekeepingService  和SSL
+        // remotingExecutor
+        // registerProcessor()
+        // scheduledExecutorService跑两个任务 1.定时扫描未活动的broker  2.定时
         boolean initResult = controller.initialize();
         if (!initResult) {
             controller.shutdown();
             System.exit(-3);
         }
-
+        //优雅停机
         Runtime.getRuntime().addShutdownHook(new ShutdownHookThread(log, new Callable<Void>() {
             @Override
             public Void call() throws Exception {

@@ -626,7 +626,7 @@ public class NettyRemotingClient extends NettyRemotingAbstract implements Remoti
             processMessageReceived(ctx, msg);
         }
     }
-
+    //连接后，把event丢到队列里。
     class NettyConnectManageHandler extends ChannelDuplexHandler {
         @Override
         public void connect(ChannelHandlerContext ctx, SocketAddress remoteAddress, SocketAddress localAddress,

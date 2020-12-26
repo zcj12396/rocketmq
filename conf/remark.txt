@@ -1,0 +1,8 @@
+启动教程：
+https://www.cnblogs.com/freeorange/p/12080747.html
+
+console端
+https://github.com/apache/rocketmq-externals/tree/master/rocketmq-console
+docker启动：
+docker pull apacherocketmq/rocketmq-console
+docker run -e "JAVA_OPTS=-Drocketmq.namesrv.addr=127.0.0.1:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false" -p 8080:8080 -t apacherocketmq/rocketmq-console-ng

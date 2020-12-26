@@ -219,7 +219,7 @@ public class NettyRemotingServer extends NettyRemotingAbstract implements Remoti
                             );
                     }
                 });
-
+        //ServerPooled
         if (nettyServerConfig.isServerPooledByteBufAllocatorEnable()) {
             childHandler.childOption(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT);
         }
@@ -231,7 +231,7 @@ public class NettyRemotingServer extends NettyRemotingAbstract implements Remoti
         } catch (InterruptedException e1) {
             throw new RuntimeException("this.serverBootstrap.bind().sync() InterruptedException", e1);
         }
-
+        //nettyEventExecutor
         if (this.channelEventListener != null) {
             this.nettyEventExecutor.start();
         }
